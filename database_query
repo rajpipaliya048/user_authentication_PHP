@@ -1,0 +1,23 @@
+CREATE DATABASE user_auth;
+
+USE user_auth;
+
+CREATE TABLE user (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	username varchar(60) NOT NULL UNIQUE KEY,
+	firstname varchar(255),
+	lastname varchar(255),
+	email varchar(100) NOT NULL UNIQUE KEY,
+	password varchar(50) NOT NULL,
+	joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	is_active BOOLEAN	
+);
+
+CREATE TABLE user_profile (
+	user_id INT,
+	age int,
+	gender varchar(10) NOT NULL,
+	hobby varchar(255),
+	profile_pic varchar(255),
+	FOREIGN KEY (user_id) REFERENCES user(id)
+);
